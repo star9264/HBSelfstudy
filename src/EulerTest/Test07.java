@@ -1,30 +1,29 @@
 package EulerTest;
-//?†Œ?ˆ˜ë¥? ?¬ê¸? ?ˆœ?œ¼ë¡? ?‚˜?—´?•˜ë©? 2, 3, 5, 7, 11, 13, ... ê³? ê°™ì´ ?©?‹ˆ?‹¤.
-//?´ ?•Œ 10,001ë²ˆì§¸?˜ ?†Œ?ˆ˜ë¥? êµ¬í•˜?„¸?š”.
+//ì†Œìˆ˜ë¥¼ í¬ê¸° ìˆœìœ¼ë¡œ ë‚˜ì—´í•˜ë©´ 2, 3, 5, 7, 11, 13, ... ê³¼ ê°™ì´ ë©ë‹ˆë‹¤.
+//ì´ ë•Œ 10,001ë²ˆì§¸ì˜ ì†Œìˆ˜ë¥¼ êµ¬í•˜ì„¸ìš”.
 public class Test07 {
 	public static void main(String[] args) {
-		int sosu_index=0;
-		int su = 2; // 10001ë²ˆì§¸ ?†Œ?ˆ˜ë¥? ë§Œë‚ ?•Œ ê¹Œì? ì¦ê??‹œ?‚¬ ?ˆ˜
-		int sosu_count=0;
-		for (int i = 1; i <=su; i++) {
-			if(su%i==0){
-				for (int j = 1; j <=su; j++) {
-					if(su%2==0){
-						sosu_count++;
-					}
+		int sosu = 0;
+		int sosu_count = 0;
+		for (int i = 2; ; i++) {
+			if (check(i)) {
+				sosu_count++;
+				if (sosu_count == 10001) {
+					sosu = i;
+					break;
 				}
-				if(sosu_count==2){
-					sosu_index++;
-				}
-				else continue;
 			}
-			su++;
 		}
-		if(sosu_index==10001){
-			System.out.println(su);
-		}
-		
-		
-		
+		System.out.println(sosu);
 	}
+	
+	public static boolean check(long n) {
+		for (int i = 2; i <= Math.sqrt((double) n); i++) {
+			if (n % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }
